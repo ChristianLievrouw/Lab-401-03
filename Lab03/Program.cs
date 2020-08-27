@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Lab03
 {
@@ -9,6 +10,10 @@ namespace Lab03
             Console.WriteLine("Hello World!");
             ListAmount();
             Diamond();
+            ChallengeSix();
+            ChallenegeSeven();
+            Challenge8();
+            ChallengeNine();
         }
 
         public static int Product(int[] array)
@@ -111,6 +116,61 @@ namespace Lab03
                 res = arr[n - 1];
             }
             return res;
+        }
+
+        public static int ChallengeFive(int[] array)
+        {
+            int bigNum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > bigNum)
+                {
+                    bigNum = array[i];
+                }
+            }
+            return bigNum;
+        }
+
+        public static void ChallengeSix()
+        {
+            const string path = "/Users/christianlievrouw/projects/delta401/Lab-401-03/word.txt";
+
+            Console.Write("Input desiered word: ");
+            string input = Console.ReadLine();
+
+            File.WriteAllText(path, input);
+
+            Console.WriteLine("Wrote {0} to {1}",input, path);
+        }
+
+        public static void ChallenegeSeven()
+        {
+            const string path = "/Users/christianlievrouw/projects/delta401/Lab-401-03/word.txt";
+
+            string text = File.ReadAllText(path);
+            Console.WriteLine(text);
+        }
+
+        public static void Challenge8()
+        {
+            const string path = "/Users/christianlievrouw/projects/delta401/Lab-401-03/word.txt";
+            string text = File.ReadAllText(path);
+            string newWord = "CODE";
+            string newText = newWord + text.Remove(0, text.IndexOf(" "));
+            File.WriteAllText(path, newText);
+        }
+
+        public static void ChallengeNine()
+        {
+            Console.WriteLine("Type a little sentence here:");
+            string input = Console.ReadLine();
+
+            string[] array = input.Split(' ');
+
+            for(int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine("{0}: {1}", array[i], array[i].Length);
+            }
         }
     }
 }
